@@ -1,0 +1,15 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+
+## Rider / VS Code
+.idea/
+.vscode/
+
+## Secrets (never commit real keys)
+appsettings.*.Local.json
+*.env

@@ -1,0 +1,43 @@
+﻿@SecureProxy.Api_HostAddress = http://localhost:5080
+@apiKey = MyLocalProxyKey123456789
+
+POST {{SecureProxy.Api_HostAddress}}/api/proxy/execute
+Content-Type: application/json
+X-Proxy-Api-Key: {{apiKey}}
+
+{
+  "clientId": "customer.get",
+  "parameters": {
+    "urlId": 1
+  }
+}
+
+###
+
+POST {{SecureProxy.Api_HostAddress}}/api/proxy/execute
+Content-Type: application/json
+X-Proxy-Api-Key: {{apiKey}}
+
+{
+  "clientId": "post.create",
+  "encryptedPayload": "+e1mijPITDJrlJiUDQ9An/SSNv8u1FzLGqHhgScHoSS9Aqxm8CURw9b/lzYEWYXeIU/UOfVY/P7UPJFTS2koop7xhvS04v4b4MNK+wRjrKCIIQtQeO0n/MqVusGLphzKf0EVIuezU2Wv6J8lTRBxjUDE4ma+VZ6cz4j/OokWAo9xgg=="
+}
+
+###
+
+PATCH http://localhost:5080/api/admin/operations/customer.get/enabled
+Content-Type: application/json
+X-Admin-Api-Key: MyLocalAdminKey123456789
+
+{
+  "isActive": true
+}
+
+### Disable operation - customer.get
+PATCH http://localhost:5080/api/admin/operations/customer.get/enabled
+Content-Type: application/json
+X-Admin-Api-Key: MyLocalAdminKey123456789
+
+{
+  "isActive": false
+}
